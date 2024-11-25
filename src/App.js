@@ -1,17 +1,22 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import TextInput from "./components/TextInput";
+import DateInput from "./components/DateInput";
 
 export default function App() {
   console.log('Teste no console do navegador');
-  const state = useState('Bruno');
-
   const [name, setName] = useState('Bruno');
+  const [birthDate, setBirthDate] = useState('1991-02-02');
 
-  function handleNameChange(event) {
-    const newName = event.currentTarget.value
+  function handleNameChange(newName) {
 
     setName(newName)
+  }
+
+  function handleBirthDateChange(newBirthDate) {
+
+    setBirthDate(newBirthDate)
   }
 
   return (
@@ -21,22 +26,16 @@ export default function App() {
       </Header>
 
       <Main>
-        <div className="flex flex-col my-4">
-          <label 
-            className="text-sm mb-1" 
-            htmlFor="inputName"
-          >
-            Digite o seu nome: 
-
-          </label>
-          <input
-            id="inputName"
-            type='text'
-            className="border"
-            value={name}
-            onChange={handleNameChange}
-          />
-        </div>
+        <TextInput
+          labelDescription="Digite o seu nome:"
+          inputValue={name}
+          onInputChang={handleNameChange}
+        />
+        <DateInput
+          labelDescription="Digite sua data de nascimento"
+          inputValue={birthDate}
+          onInputChang={handleBirthDateChange}
+        />
         <p>
           O seu nome é {name}, com {name.length} caracteres, e você possui 38 anos
         </p>
