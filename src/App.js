@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import TextInput from "./components/TextInput";
 import DateInput from "./components/DateInput";
+import { getAgeFrom } from "./helpers/dateHelpers";
 
 export default function App() {
   console.log('Teste no console do navegador');
@@ -22,7 +23,7 @@ export default function App() {
   return (
     <>
       <Header size='large'>
-        Componente Header - React Hello
+        React Hello
       </Header>
 
       <Main>
@@ -37,7 +38,7 @@ export default function App() {
           onInputChang={handleBirthDateChange}
         />
         <p>
-          O seu nome é {name}, com {name.length} caracteres, e você possui 38 anos
+          O seu nome é {name}, com {name.length} caracteres, e você possui {getAgeFrom(birthDate)} anos
         </p>
       </Main>
 
