@@ -4,6 +4,7 @@ import Main from "./components/Main";
 import TextInput from "./components/TextInput";
 import DateInput from "./components/DateInput";
 import { getAgeFrom } from "./helpers/dateHelpers";
+import getNewId from "./services/idService";
 
 export default function App() {
   console.log('Teste no console do navegador');
@@ -31,11 +32,14 @@ export default function App() {
           labelDescription="Digite o seu nome:"
           inputValue={name}
           onInputChang={handleNameChange}
+          id={getNewId()}
+          autoFocus
         />
         <DateInput
           labelDescription="Digite sua data de nascimento"
           inputValue={birthDate}
           onInputChang={handleBirthDateChange}
+          id={getNewId()}
         />
         <p>
           O seu nome é {name}, com {name.length} caracteres, e você possui {getAgeFrom(birthDate)} anos
