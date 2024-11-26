@@ -3,16 +3,16 @@ import React from 'react'
 export default function DateInput({
 	labelDescription = 'Descrição do label:',
 	inputValue = '2024-04-30',
-	onInputChang = null,
+	onInputChange = null,
   id = 'id-input-date',
   autoFocus = false,
 }) {
 
 	function handleInputChange({ currentTarget }) {
 
-		if (onInputChang) {
+		if (onInputChange) {
 			const newValue = currentTarget.value;
-			onInputChang(newValue)
+			onInputChange(newValue)
 		}
 
 	}

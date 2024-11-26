@@ -3,16 +3,16 @@ import React from 'react'
 export default function TextInput({
 	labelDescription = 'Descrição do label:',
 	inputValue = 'Valor padrão do input',
-	onInputChang = null,
+	onInputChange = null,
 	id = 'id-input-text',
 	autoFocus
 }) {
 
 	function handleInputChange({ currentTarget }) {
 
-		if (onInputChang) {
+		if (onInputChange) {
 			const newValue = currentTarget.value;
-			onInputChang(newValue)
+			onInputChange(newValue)
 		}
 
 	}

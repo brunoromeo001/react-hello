@@ -23,7 +23,5 @@ export function getAgeFrom(birthDate) {
         return age - 1
     }
 
-
-
     return 38
 }
