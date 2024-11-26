@@ -7,17 +7,38 @@ import { getAgeFrom } from "./helpers/dateHelpers";
 import getNewId from "./services/idService";
 import Timer from "./components/Timer";
 import CheckboxInput from "./components/CheckboxInput";
+import OnlineOffline from "./components/OnlineOffline";
 
 export default function App() {
 
   const [name, setName] = useState('Bruno');
   const [birthDate, setBirthDate] = useState('1991-02-02');
   const [showTimer, setShowTimer] = useState(false);
+  const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
-    console.log('Executando userEffect')
     document.title  =  name
   }, [name])
+
+  useEffect(() => {
+
+    function toogleOnline() {
+      setIsOnline(true)
+    }
+
+    function toogleOffline() {
+      setIsOnline(false)
+    }
+    window.addEventListener('online', toogleOnline)
+
+    window.addEventListener('offline', toogleOffline)
+
+    return () => {
+      window.removeEventListener('online', toogleOnline)
+      window.removeEventListener('online', toogleOffline)
+    }
+
+  }, [])
 
   function handleNameChange(newName) {
 
@@ -40,6 +61,10 @@ export default function App() {
         React Hello
       </Header>
       <Main>
+      <OnlineOffline
+        isOnline={isOnline}
+
+      />
         {
           showTimer && (
             <div className="text-right mt-1">
