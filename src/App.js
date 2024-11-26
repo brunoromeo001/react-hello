@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import TextInput from "./components/TextInput";
@@ -7,9 +7,14 @@ import { getAgeFrom } from "./helpers/dateHelpers";
 import getNewId from "./services/idService";
 
 export default function App() {
-  console.log('Teste no console do navegador');
+
   const [name, setName] = useState('Bruno');
   const [birthDate, setBirthDate] = useState('1991-02-02');
+
+  useEffect(() => {
+    console.log('Executando userEffect')
+    document.title  =  name
+  }, [name])
 
   function handleNameChange(newName) {
 
