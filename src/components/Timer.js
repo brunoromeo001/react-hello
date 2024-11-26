@@ -7,7 +7,11 @@ export default function Timer() {
         const interval = setInterval(() => {
             setValue(currentValue => currentValue + 1)
         }, 1000)
-    }, [value])
+
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
     return (
         <span
             className='bg-red-200 p-3 font-semibold'

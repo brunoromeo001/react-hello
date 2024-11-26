@@ -8,7 +8,7 @@ export default function CheckboxInput({
 	autoFocus
 }) {
 
-	function handleInputChange({ currentTarget }) {
+	function handleInputChange() {
 
 		if (onCheckboxChange) {
 			onCheckboxChange()
